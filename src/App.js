@@ -1,11 +1,13 @@
 import './App.css';
 import React from "react";
-import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, NavLink, Routes } from 'react-router-dom';
 
 import Home from './components/Home';
-import User from './components/User';
+
 import About from './components/About';
 import Users from './components/Users';
+import Error404 from './components/Error404'
+
 
 function App() {
   return (
@@ -14,13 +16,13 @@ function App() {
         <nav>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <NavLink activeStyle= {{backgroundColor: "black" , color: '#fff'}} to="/" exact>Home</NavLink>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <NavLink activeStyle= {{backgroundColor: "black" , color: '#fff'}} to="/about">About</NavLink>
             </li>
             <li>
-              <Link to="/users">Users</Link>
+              <NavLink activeStyle= {{backgroundColor: "black" , color: '#fff'}} to="/users">Users</NavLink>
             </li>
           </ul>
         </nav>
@@ -31,7 +33,8 @@ function App() {
           <Route path="/" exact element={<Home />} />
           <Route path="/about" element={<About />} />  {/*  <Route path="/about" component={About} olarakta yazılabilir. */}
           <Route path="/users" element={<Users />} />
-          <Route path="/user/:id" element={<User />} /> {/*  bu kısımda :id ile router a ben buraya id vereceğim dedik. */}
+          {/* <Route path="/user/:id" element={<User />} />      bu kısımda :id ile router a ben buraya id vereceğim dedik. */}
+          <Route path="*" element={<Error404 />} />
 
         </Routes>
       </div>
